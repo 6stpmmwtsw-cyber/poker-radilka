@@ -8,15 +8,7 @@
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #0b0b0b; color: #fff; overflow: hidden; }
         
-        #camera-feed { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        
-        /* Scan Target Overlay */
-        .scan-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .scan-box { width: 220px; height: 140px; border: 2px dashed rgba(0, 122, 255, 0.8); border-radius: 16px; background: rgba(0, 122, 255, 0.05); box-shadow: 0 0 30px rgba(0, 122, 255, 0.2); position: relative; }
-        .scan-box::after { content: "ZAMIŘ KARTY SEM"; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: bold; color: #007aff; letter-spacing: 1px; white-space: nowrap; }
-
-        .app-container { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 12px; pointer-events: none; }
-        .app-container > * { pointer-events: auto; }
+        .app-container { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 12px; }
 
         /* Top Navigation Tabs */
         .nav-tabs { display: flex; background: rgba(20,20,20,0.85); padding: 5px; border-radius: 12px; backdrop-filter: blur(10px); gap: 5px; border: 1px solid rgba(255,255,255,0.1); }
@@ -24,57 +16,48 @@
         .tab-btn.active { background: #007aff; color: #fff; }
 
         /* Content Sections */
-        .section { display: none; flex: 1; flex-direction: column; justify-content: center; gap: 12px; }
+        .section { display: none; flex: 1; flex-direction: column; justify-content: center; gap: 10px; }
         .section.active { display: flex; }
 
         /* Decision Box */
-        .decision-card { background: rgba(18, 18, 18, 0.85); border-radius: 18px; padding: 18px; text-align: center; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
-        .action-title { font-size: 34px; font-weight: 900; margin: 5px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .action-fold { color: #ff4d4d; text-shadow: 0 0 15px rgba(255,77,77,0.4); }
-        .action-call { color: #2ecc71; text-shadow: 0 0 15px rgba(46,204,113,0.4); }
-        .action-raise { color: #f1c40f; text-shadow: 0 0 15px rgba(241,196,15,0.4); }
+        .decision-card { background: rgba(18, 18, 18, 0.95); border-radius: 18px; padding: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        .action-title { font-size: 32px; font-weight: 900; margin: 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .action-fold { color: #ff4d4d; }
+        .action-call { color: #2ecc71; }
+        .action-raise { color: #f1c40f; }
 
         /* Grid */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-        .grid-item { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.03); }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+        .grid-item { background: rgba(255,255,255,0.05); padding: 8px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.03); }
         .stat-label { font-size: 10px; color: #aaa; text-transform: uppercase; margin-bottom: 2px; }
-        .grid-val { font-size: 18px; font-weight: bold; }
+        .grid-val { font-size: 16px; font-weight: bold; }
+
+        /* Quick Select Hand Buttons */
+        .fast-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 5px; }
+        .card-btn { background: #1f1f1f; color: #fff; border: 1px solid #444; padding: 12px 0; border-radius: 10px; font-weight: bold; font-size: 15px; text-align: center; }
+        .card-btn:active { background: #007aff; border-color: #007aff; }
 
         /* Settings */
-        .settings-card { background: rgba(18, 18, 18, 0.9); border-radius: 18px; padding: 15px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
-        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .setting-row:last-child { border-bottom: none; }
+        .settings-card { background: rgba(18, 18, 18, 0.9); border-radius: 18px; padding: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .setting-row span { font-size: 14px; color: #ddd; }
         .setting-select { background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 8px; font-size: 14px; }
-
-        /* Bottom Controls */
-        .controls { display: flex; gap: 10px; }
-        .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; background: #222; color: white; font-weight: bold; font-size: 14px; border: 1px solid rgba(255,255,255,0.1); }
-        .btn-primary { background: #007aff; border: none; }
     </style>
 </head>
 <body>
 
-    <video id="camera-feed" autoplay playsinline muted></video>
-    
-    <!-- Vizuální zaměřovač pro skenování karet -->
-    <div class="scan-overlay">
-        <div class="scan-box"></div>
-    </div>
-
     <div class="app-container">
         <!-- Hlavní menu -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('live', this)">🎥 Sken / Semafor</button>
-            <button class="tab-btn" onclick="switchTab('calc', this)">📊 Kalkulačka</button>
+            <button class="tab-btn active" onclick="switchTab('live', this)">⚡ Bleskový Výběr</button>
             <button class="tab-btn" onclick="switchTab('settings', this)">⚙️ Nastavení</button>
         </div>
 
-        <!-- SEKCE 1: Skenování a Živý Semafor -->
+        <!-- SEKCE 1: Rychlá volba karet jedním ťuknutím -->
         <div id="section-live" class="section active">
             <div class="decision-card">
-                <div class="stat-label">Doporučená Akce ze Skenu</div>
-                <div id="action-text" class="action-title action-call">ČEKÁM NA KARTY</div>
+                <div class="stat-label">Doporučená Akce</div>
+                <div id="action-text" class="action-title action-call">VYBER KARTU DOLE</div>
                 
                 <div class="stats-grid">
                     <div class="grid-item">
@@ -85,29 +68,25 @@
                         <div class="stat-label">Očekávaná hodnota</div>
                         <div id="ev-val" class="grid-val" style="color: #00ff88;">--</div>
                     </div>
-                    <div class="grid-item">
-                        <div class="stat-label">Režim kamery</div>
-                        <div class="grid-val" style="font-size:13px; color:#007aff;">Aktivní sken</div>
-                    </div>
-                    <div class="grid-item">
-                        <div class="stat-label">Detekované karty</div>
-                        <div id="cards-val" class="grid-val" style="color: #f1c40f;">Zaměřte rámeček</div>
-                    </div>
+                </div>
+            </div>
+
+            <div class="decision-card" style="padding: 10px;">
+                <div class="stat-label" style="margin-bottom: 6px;">Ťukni na své karty pro okamžitý výpočet:</div>
+                <div class="fast-picker">
+                    <button class="card-btn" onclick="selectHand('AA', '85.0%', '+8.2 BB', 'RAISE 3x', 'action-raise')">A-A</button>
+                    <button class="card-btn" onclick="selectHand('KK', '82.0%', '+7.1 BB', 'RAISE 3x', 'action-raise')">K-K</button>
+                    <button class="card-btn" onclick="selectHand('QQ', '79.0%', '+6.0 BB', 'RAISE 3x', 'action-raise')">Q-Q</button>
+                    <button class="card-btn" onclick="selectHand('AKs', '67.0%', '+4.2 BB', 'RAISE 2.5x', 'action-raise')">AKs</button>
+                    <button class="card-btn" onclick="selectHand('JJ', '75.0%', '+4.8 BB', 'RAISE 2.5x', 'action-raise')">J-J</button>
+                    <button class="card-btn" onclick="selectHand('TT', '71.0%', '+3.5 BB', 'CALL', 'action-call')">T-T</button>
+                    <button class="card-btn" onclick="selectHand('AQs', '65.0%', '+3.1 BB', 'CALL', 'action-call')">AQs</button>
+                    <button class="card-btn" onclick="selectHand('72o', '32.0%', '-2.1 BB', 'FOLD', 'action-fold')">7-2o</button>
                 </div>
             </div>
         </div>
 
-        <!-- SEKCE 2: Kalkulačka -->
-        <div id="section-calc" class="section">
-            <div class="settings-card">
-                <h3 style="margin-top:0; font-size:16px; color:#007aff;">Ruční výpočet situace</h3>
-                <div style="font-size: 13px; color: #aaa; margin-bottom: 12px;">Zde můžeš ručně prověřit sílu kombinace.</div>
-                <button class="btn btn-primary" style="width:100%;" onclick="runManualCalc()">🧮 Spočítat šance</button>
-                <div id="calc-result" style="margin-top: 12px; font-weight: bold; text-align: center; color: #2ecc71;"></div>
-            </div>
-        </div>
-
-        <!-- SEKCE 3: Nastavení -->
+        <!-- SEKCE 2: Nastavení -->
         <div id="section-settings" class="section">
             <div class="settings-card">
                 <div class="setting-row">
@@ -130,29 +109,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Spodní ovládací lišta -->
-        <div class="controls">
-            <button class="btn" onclick="captureAndScan()">📸 Skenovat karty</button>
-            <button class="btn btn-primary" onclick="resetScan()">🔄 Reset</button>
-        </div>
     </div>
 
     <script>
-        const video = document.getElementById('camera-feed');
-        
-        async function startCamera() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { facingMode: "environment" },
-                    audio: false 
-                });
-                video.srcObject = stream;
-            } catch (err) {
-                console.log("Kamera nelze spustit.");
-            }
-        }
-
         function switchTab(tabName, element) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -161,46 +120,12 @@
             element.classList.add('active');
         }
 
-        // Funkce, která reálně vezme aktuální snímek z kamery a provede vyhodnocení uvnitř rámce
-        function captureAndScan() {
-            document.getElementById('cards-val').innerText = "Analyzuji...";
-            document.getElementById('action-text').innerText = "NAČÍTÁM...";
-            
-            setTimeout(() => {
-                // Simulace reálného rozpoznání karet v zorném poli rámečku
-                const detectedHands = [
-                    { cards: "A♥ K♥", action: "RAISE 3x", ev: "+5.4 BB", win: "78.2%", css: "action-raise" },
-                    { cards: "J♠ J♦", action: "RAISE 2.5x", ev: "+4.1 BB", win: "72.0%", css: "action-raise" },
-                    { cards: "7♠ 2♣", action: "FOLD", ev: "-1.8 BB", win: "32.5%", css: "action-fold" },
-                    { cards: "Q♥ Q♣", action: "ALL-IN", ev: "+8.9 BB", win: "84.1%", css: "action-raise" },
-                    { cards: "10♠ 9♠", action: "CALL", ev: "+0.9 BB", win: "51.4%", css: "action-call" }
-                ];
-                
-                const randomHit = detectedHands[Math.floor(Math.random() * detectedHands.length)];
-                
-                document.getElementById('cards-val').innerText = randomHit.cards;
-                document.getElementById('action-text').innerText = randomHit.action;
-                document.getElementById('action-text').className = "action-title " + randomHit.css;
-                document.getElementById('win-rate').innerText = randomHit.win;
-                document.getElementById('ev-val').innerText = randomHit.ev;
-            }, 600);
+        function selectHand(cards, win, ev, action, cssClass) {
+            document.getElementById('action-text').innerText = action;
+            document.getElementById('action-text').className = "action-title " + cssClass;
+            document.getElementById('win-rate').innerText = win;
+            document.getElementById('ev-val').innerText = ev;
         }
-
-        function resetScan() {
-            document.getElementById('cards-val').innerText = "Zaměřte rámeček";
-            document.getElementById('action-text').innerText = "ČEKÁM NA KARTY";
-            document.getElementById('action-text').className = "action-title action-call";
-            document.getElementById('win-rate').innerText = "--";
-            document.getElementById('ev-val').innerText = "--";
-        }
-
-        function runManualCalc() {
-            document.getElementById('calc-result').innerText = "Výpočet hotov: Equity 63.5% (Silná pozice)";
-        }
-
-        startCamera();
     </script>
 </body>
 </html>
-
-
