@@ -49,11 +49,11 @@
     <div class="app-container">
         <!-- Hlavní menu -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('live', this)">⚡ Bleskový Výběr</button>
+            <button class="tab-btn active" onclick="switchTab('live', this)">⚡ Ruční Výběr</button>
             <button class="tab-btn" onclick="switchTab('settings', this)">⚙️ Nastavení</button>
         </div>
 
-        <!-- SEKCE 1: Rychlá volba karet jedním ťuknutím -->
+        <!-- SEKCE 1: Rychlá volba karet -->
         <div id="section-live" class="section active">
             <div class="decision-card">
                 <div class="stat-label">Doporučená Akce</div>
@@ -72,7 +72,7 @@
             </div>
 
             <div class="decision-card" style="padding: 10px;">
-                <div class="stat-label" style="margin-bottom: 6px;">Ťukni na své karty pro okamžitý výpočet:</div>
+                <div class="stat-label" style="margin-bottom: 6px;">Ťukni na své karty:</div>
                 <div class="fast-picker">
                     <button class="card-btn" onclick="selectHand('AA', '85.0%', '+8.2 BB', 'RAISE 3x', 'action-raise')">A-A</button>
                     <button class="card-btn" onclick="selectHand('KK', '82.0%', '+7.1 BB', 'RAISE 3x', 'action-raise')">K-K</button>
@@ -121,7 +121,7 @@
         }
 
         function selectHand(cards, win, ev, action, cssClass) {
-            document.getElementById('action-text').innerText = action;
+            document.getElementById('action-text').innerText = action + " (" + cards + ")";
             document.getElementById('action-text').className = "action-title " + cssClass;
             document.getElementById('win-rate').innerText = win;
             document.getElementById('ev-val').innerText = ev;
