@@ -8,40 +8,40 @@
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: #0b0b0b; color: #fff; overflow: hidden; }
         
-        .app-container { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 12px; }
+        .app-container { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 10px; }
 
         /* Top Navigation Tabs */
-        .nav-tabs { display: flex; background: rgba(20,20,20,0.85); padding: 5px; border-radius: 12px; backdrop-filter: blur(10px); gap: 5px; border: 1px solid rgba(255,255,255,0.1); }
-        .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; color: #aaa; font-weight: bold; border-radius: 8px; font-size: 13px; text-align: center; }
+        .nav-tabs { display: flex; background: rgba(20,20,20,0.85); padding: 4px; border-radius: 12px; backdrop-filter: blur(10px); gap: 5px; border: 1px solid rgba(255,255,255,0.1); }
+        .tab-btn { flex: 1; padding: 8px; border: none; background: transparent; color: #aaa; font-weight: bold; border-radius: 8px; font-size: 13px; text-align: center; }
         .tab-btn.active { background: #007aff; color: #fff; }
 
         /* Content Sections */
-        .section { display: none; flex: 1; flex-direction: column; justify-content: center; gap: 10px; }
+        .section { display: none; flex: 1; flex-direction: column; justify-content: space-between; gap: 8px; }
         .section.active { display: flex; }
 
         /* Decision Box */
-        .decision-card { background: rgba(18, 18, 18, 0.95); border-radius: 18px; padding: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
-        .action-title { font-size: 32px; font-weight: 900; margin: 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .decision-card { background: rgba(18, 18, 18, 0.95); border-radius: 14px; padding: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+        .action-title { font-size: 26px; font-weight: 900; margin: 3px 0; text-transform: uppercase; letter-spacing: 1px; }
         .action-fold { color: #ff4d4d; }
         .action-call { color: #2ecc71; }
         .action-raise { color: #f1c40f; }
 
         /* Grid */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
-        .grid-item { background: rgba(255,255,255,0.05); padding: 8px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.03); }
-        .stat-label { font-size: 10px; color: #aaa; text-transform: uppercase; margin-bottom: 2px; }
-        .grid-val { font-size: 16px; font-weight: bold; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+        .grid-item { background: rgba(255,255,255,0.05); padding: 6px; border-radius: 8px; text-align: center; border: 1px solid rgba(255,255,255,0.03); }
+        .stat-label { font-size: 9px; color: #aaa; text-transform: uppercase; margin-bottom: 2px; }
+        .grid-val { font-size: 14px; font-weight: bold; }
 
-        /* Quick Select Hand Buttons */
-        .fast-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 5px; }
-        .card-btn { background: #1f1f1f; color: #fff; border: 1px solid #444; padding: 12px 0; border-radius: 10px; font-weight: bold; font-size: 15px; text-align: center; }
+        /* Quick Select Hand Buttons - Velká mřížka */
+        .fast-picker { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; overflow-y: auto; max-height: 48vh; padding-right: 2px; }
+        .card-btn { background: #1f1f1f; color: #fff; border: 1px solid #444; padding: 10px 0; border-radius: 8px; font-weight: bold; font-size: 13px; text-align: center; }
         .card-btn:active { background: #007aff; border-color: #007aff; }
 
         /* Settings */
-        .settings-card { background: rgba(18, 18, 18, 0.9); border-radius: 18px; padding: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .setting-row span { font-size: 14px; color: #ddd; }
-        .setting-select { background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 6px 12px; border-radius: 8px; font-size: 14px; }
+        .settings-card { background: rgba(18, 18, 18, 0.9); border-radius: 14px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .setting-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .setting-row span { font-size: 13px; color: #ddd; }
+        .setting-select { background: #2a2a2a; color: #fff; border: 1px solid #444; padding: 5px 10px; border-radius: 6px; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -57,7 +57,7 @@
         <div id="section-live" class="section active">
             <div class="decision-card">
                 <div class="stat-label">Doporučená Akce</div>
-                <div id="action-text" class="action-title action-call">VYBER KARTU DOLE</div>
+                <div id="action-text" class="action-title action-call">VYBER KARTU</div>
                 
                 <div class="stats-grid">
                     <div class="grid-item">
@@ -71,17 +71,38 @@
                 </div>
             </div>
 
-            <div class="decision-card" style="padding: 10px;">
-                <div class="stat-label" style="margin-bottom: 6px;">Ťukni na své karty:</div>
+            <div class="decision-card" style="padding: 8px; flex: 1; display: flex; flex-direction: column;">
+                <div class="stat-label" style="margin-bottom: 4px;">Ťukni na své karty:</div>
                 <div class="fast-picker">
-                    <button class="card-btn" onclick="selectHand('AA', '85.0%', '+8.2 BB', 'RAISE 3x', 'action-raise')">A-A</button>
-                    <button class="card-btn" onclick="selectHand('KK', '82.0%', '+7.1 BB', 'RAISE 3x', 'action-raise')">K-K</button>
-                    <button class="card-btn" onclick="selectHand('QQ', '79.0%', '+6.0 BB', 'RAISE 3x', 'action-raise')">Q-Q</button>
+                    <button class="card-btn" onclick="selectHand('AA', '85.0%', '+8.2 BB', 'RAISE 3x', 'action-raise')">AA</button>
+                    <button class="card-btn" onclick="selectHand('KK', '82.0%', '+7.1 BB', 'RAISE 3x', 'action-raise')">KK</button>
+                    <button class="card-btn" onclick="selectHand('QQ', '79.0%', '+6.0 BB', 'RAISE 3x', 'action-raise')">QQ</button>
+                    <button class="card-btn" onclick="selectHand('JJ', '75.0%', '+4.8 BB', 'RAISE 2.5x', 'action-raise')">JJ</button>
+                    
+                    <button class="card-btn" onclick="selectHand('TT', '71.0%', '+3.5 BB', 'RAISE 2.5x', 'action-raise')">TT</button>
+                    <button class="card-btn" onclick="selectHand('99', '67.0%', '+2.2 BB', 'CALL', 'action-call')">99</button>
+                    <button class="card-btn" onclick="selectHand('88', '63.0%', '+1.1 BB', 'CALL', 'action-call')">88</button>
+                    <button class="card-btn" onclick="selectHand('77', '59.0%', '+0.4 BB', 'CALL', 'action-call')">77</button>
+
                     <button class="card-btn" onclick="selectHand('AKs', '67.0%', '+4.2 BB', 'RAISE 2.5x', 'action-raise')">AKs</button>
-                    <button class="card-btn" onclick="selectHand('JJ', '75.0%', '+4.8 BB', 'RAISE 2.5x', 'action-raise')">J-J</button>
-                    <button class="card-btn" onclick="selectHand('TT', '71.0%', '+3.5 BB', 'CALL', 'action-call')">T-T</button>
-                    <button class="card-btn" onclick="selectHand('AQs', '65.0%', '+3.1 BB', 'CALL', 'action-call')">AQs</button>
-                    <button class="card-btn" onclick="selectHand('72o', '32.0%', '-2.1 BB', 'FOLD', 'action-fold')">7-2o</button>
+                    <button class="card-btn" onclick="selectHand('AKo', '65.0%', '+3.8 BB', 'RAISE 2.5x', 'action-raise')">AKo</button>
+                    <button class="card-btn" onclick="selectHand('AQs', '65.0%', '+3.1 BB', 'RAISE 2.5x', 'action-raise')">AQs</button>
+                    <button class="card-btn" onclick="selectHand('AQo', '63.0%', '+2.5 BB', 'CALL', 'action-call')">AQo</button>
+
+                    <button class="card-btn" onclick="selectHand('AJs', '63.0%', '+2.4 BB', 'CALL', 'action-call')">AJs</button>
+                    <button class="card-btn" onclick="selectHand('ATs', '61.0%', '+1.8 BB', 'CALL', 'action-call')">ATs</button>
+                    <button class="card-btn" onclick="selectHand('KQs', '62.0%', '+2.1 BB', 'CALL', 'action-call')">KQs</button>
+                    <button class="card-btn" onclick="selectHand('KJs', '60.0%', '+1.5 BB', 'CALL', 'action-call')">KJs</button>
+
+                    <button class="card-btn" onclick="selectHand('QJs', '58.0%', '+1.2 BB', 'CALL', 'action-call')">QJs</button>
+                    <button class="card-btn" onclick="selectHand('JTs', '57.0%', '+1.0 BB', 'CALL', 'action-call')">JTs</button>
+                    <button class="card-btn" onclick="selectHand('T9s', '54.0%', '+0.5 BB', 'CALL', 'action-call')">T9s</button>
+                    <button class="card-btn" onclick="selectHand('98s', '52.0%', '+0.2 BB', 'CALL', 'action-call')">98s</button>
+
+                    <button class="card-btn" onclick="selectHand('KTo', '53.0%', '-0.2 BB', 'FOLD', 'action-fold')">KTo</button>
+                    <button class="card-btn" onclick="selectHand('QTo', '51.0%', '-0.5 BB', 'FOLD', 'action-fold')">QTo</button>
+                    <button class="card-btn" onclick="selectHand('J9s', '51.0%', '-0.3 BB', 'FOLD', 'action-fold')">J9s</button>
+                    <button class="card-btn" onclick="selectHand('72o', '32.0%', '-2.1 BB', 'FOLD', 'action-fold')">72o</button>
                 </div>
             </div>
         </div>
