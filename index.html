@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Poker Assistant Pro</title>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #000; font-family: sans-serif; }
+        #camera-feed { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transform: scaleX(-1); /* Pro přední kameru, pro zadní smazat */ }
+        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; box-sizing: border-box; }
+        #decision-box { width: 100%; height: 50vh; border-radius: 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-transform: uppercase; font-weight: bold; font-size: 3rem; transition: background 0.3s ease; box-shadow: 0 -10px 30px rgba(0,0,0,0.5); }
+        .waiting { background: rgba(50, 50, 50, 0.85); color: #aaa; }
+        .fold { background: rgba(220, 53, 69, 0.9); color: white; }
+        .call { background: rgba(40, 167, 69, 0.9); color: white; }
+        .raise { background: rgba(255, 193, 7, 0.9); color: #212529; }
+    </style>
+</head>
+<body>
+
+    <!-- Video feed z kamery -->
+    <video id="camera-feed" autoplay playsinline></video>
+
+    <!-- Překryvná vrstva (Semafor) -->
+    <div id="overlay">
+        <div id="decision-box" class="waiting">
+            <span id="decision-text">Čekám... Zamiř na karty</span>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('camera-feed');
+        const decisionBox = document.getElementById('decision-box');
+        const decisionText = document.getElementById('decision-text');
+
+        // Funkce pro spuštění kamery
+        async function startCamera() {
+            try {
+                // Požádáme o zadní kameru
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: "environment" },
+                    audio: false 
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Chyba při přístupu ke kameře: ", err);
+                alert("Nepodařilo se spustit kameru. Povolte přístup.");
+            }
+        }
+
+        // --- SIMULACE POKEROVÉ LOGIKY (Prozatím) ---
+        // Funkce pro aktualizaci semaforu
+        function updateDecision(action, text) {
+            decisionBox.className = action.toLowerCase(); // Nastaví třídu (fold, call, raise)
+            decisionText.innerText = text; // Nastaví text
+        }
+
+        // Malá ukázka, jak se to bude měnit (Simulace cyklu každých 5s)
+        setTimeout(() => updateDecision("fold", "Zahoď! (Fold)"), 5000);
+        setTimeout(() => updateDecision("call", "Dorovnej! (Call)"), 10000);
+        setTimeout(() => updateDecision("raise", "Vsaď! (Raise)"), 15000);
+
+        // Spustíme kameru hned po načtení
+        startCamera();
+    </script>
+</body>
+</html>
